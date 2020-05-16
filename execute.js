@@ -3,7 +3,7 @@
 // 快速push 到git服务器脚本
 const {execSync} = require('child_process');
 const program = require('commander');
-
+const ora = require('ora');
 
 module.exports = function (pull) {
     const types = [
@@ -81,8 +81,10 @@ module.exports = function (pull) {
 
         if (pull) {
             console.log('🚚 git pull');
+            const spinner = ora('Loading unicorns').start();
             execSync(`git pull`, {stdio: [0, 1, 2]});
             console.log(); // 换行
+            spinner.stop();
         }
 
         console.log('✨  git add .');
