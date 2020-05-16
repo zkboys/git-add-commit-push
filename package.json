@@ -1,0 +1,32 @@
+{
+  "name": "zk-acp",
+  "version": "0.0.4",
+  "description": "git快速提交脚本",
+  "main": "index.js",
+  "bin": {
+    "acp": "index.js"
+  },
+  "preferGlobal": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zkboys/git-add-commit-push.git"
+  },
+  "keywords": [
+    "git",
+    "add",
+    "commit",
+    "push"
+  ],
+  "author": "zkboys",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zkboys/git-add-commit-push/issues"
+  },
+  "homepage": "https://github.com/zkboys/git-add-commit-push#readme",
+  "dependencies": {
+    "commander": "^5.1.0"
+  }
+}
