@@ -123,7 +123,7 @@ module.exports = async function (pull) {
 
         console.log('🎉 Successfully!');
     } catch (e) {
-        // console.error(e);
+        console.error(e);
         spinner.stop();
         console.log();
         console.log('🚨 Something Wrong!');
