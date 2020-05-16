@@ -84,9 +84,7 @@ module.exports = function (pull) {
             console.log(); // 换行
         }
 
-
-
-
+        // 添加所有
         console.log('✨  git add .');
         execSync(`git add .`, {stdio: [0, 1, 2]});
         console.log(); // 换行
