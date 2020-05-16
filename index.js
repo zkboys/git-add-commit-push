@@ -74,7 +74,14 @@ try {
     const branch = execSync('git branch');
     const currentBranch = branch.toString().replace('*', '').trim();
 
-    execSync(`git add . && git commit -m '${msg}' && git push origin ${currentBranch} `, {stdio: [0, 1, 2]});
+    console.log('git add .');
+    execSync(`git add .`, {stdio: [0, 1, 2]});
+
+    console.log('git commit');
+    execSync(`git commit -m '${msg}'`, {stdio: [0, 1, 2]});
+
+    console.log(`git push origin ${currentBranch} `);
+    execSync(`git push origin ${currentBranch} `, {stdio: [0, 1, 2]});
 } catch (e) {
     // console.error(e);
 }
