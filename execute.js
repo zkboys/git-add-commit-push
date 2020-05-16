@@ -107,7 +107,6 @@ module.exports = async function (pull) {
 
         spinner.text = `🚀 git push origin ${currentBranch} `;
         spinner.start();
-        throw Error('aaa');
         await exec(`git push origin ${currentBranch} `, {stdio: [0, 1, 2]});
         console.log();
         spinner.stop();
