@@ -86,7 +86,8 @@ try {
     execSync(`git push origin ${currentBranch} `, {stdio: [0, 1, 2]});
     console.log();
 
-    console.log('🎉 Successfully');
+    console.log('🎉 Successfully!');
 } catch (e) {
     // console.error(e);
+    console.log('🚨 Something Wrong!');
 }
