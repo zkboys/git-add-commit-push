@@ -10,7 +10,10 @@ const {execSync} = childProcess;
 const exec = async function (...args) {
     return new Promise((resolve, reject) => {
         childProcess.exec(...args, (err, stdout, stderr) => {
-            if (err) return reject(err);
+            if (err) {
+                console.log(err);
+                return reject(err);
+            }
             resolve(stdout);
             stdout && stdout.trim() && console.log(stdout);
             stderr && stderr.trim() && console.log(stderr);
