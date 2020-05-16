@@ -6,7 +6,17 @@ const program = require('commander');
 const ora = require('ora');
 const {promisify} = require('util');
 const {execSync} = childProcess;
-const exec = promisify(childProcess.exec);
+// const exec = promisify(childProcess.exec);
+const exec = async function (...args){
+    return new Promise((resolve, reject) => {
+        childProcess.exec(...args, (err, stdout, stderr) => {
+            if(err) return reject(err);
+            resolve(stdout);
+            console.log(stdout);
+            console.log(stderr);
+        });
+    })
+};
 
 module.exports = async function (pull) {
     const types = [
