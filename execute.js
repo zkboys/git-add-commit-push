@@ -11,15 +11,15 @@ const exec = async function (...args) {
     return new Promise((resolve, reject) => {
         const child = childProcess.exec(...args, (err, stdout, stderr) => {
             if (err) {
-                console.log();
-                console.log(err.message);
-                stdout && stdout.trim() && console.log(stdout);
-                stderr && stderr.trim() && console.log(stderr);
+                // console.log();
+                // console.log(err.message);
+                // stdout && stdout.trim() && console.log(stdout);
+                // stderr && stderr.trim() && console.log(stderr);
                 return reject(err);
             }
             resolve(stdout);
-            stdout && stdout.trim() && console.log(stdout);
-            stderr && stderr.trim() && console.log(stderr);
+            // stdout && stdout.trim() && console.log(stdout);
+            // stderr && stderr.trim() && console.log(stderr);
         });
 
         child.stdout.on('data', (data) => {
