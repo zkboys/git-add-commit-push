@@ -74,7 +74,7 @@ try {
     const branch = execSync('git branch');
     const currentBranch = branch.toString().replace('*', '').trim();
 
-    console.log('🐎 git pull');
+    console.log('⬇️ git pull');
     execSync(`git pull`, {stdio: [0, 1, 2]});
     console.log(); // 换行
 
