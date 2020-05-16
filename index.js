@@ -39,7 +39,7 @@ console.log(program.pull);
 
 if (!message) {
     const [, , ...messages] = process.argv;
-    message = messages.join(' ');
+    message = messages.filter(item => item !== '-p' && item !== '--p').join(' ');
 }
 
 // message 默认代码重构
