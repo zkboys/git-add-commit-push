@@ -82,7 +82,7 @@ module.exports = async function (pull) {
     spinner.color = 'yellow';
 
     try {
-        const branch = await exec('git branch');
+        const branch = execSync('git branch');
         const currentBranch = branch.toString().replace('*', '').trim();
 
         if (pull) {
@@ -114,6 +114,7 @@ module.exports = async function (pull) {
         console.log('🎉 Successfully!');
     } catch (e) {
         // console.error(e);
+        spinner.stop();
         console.log();
         console.log('🚨 Something Wrong!');
     }
