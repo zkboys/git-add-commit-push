@@ -4,7 +4,8 @@
   "description": "git快速提交脚本",
   "main": "index.js",
   "bin": {
-    "acp": "index.js"
+    "acp": "acp.js",
+    "pacp": "pacp.js"
   },
   "preferGlobal": true,
   "scripts": {
