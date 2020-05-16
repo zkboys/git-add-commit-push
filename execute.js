@@ -1,11 +1,14 @@
 #! /usr/bin/env node
 
 // 快速push 到git服务器脚本
-const {execSync} = require('child_process');
+const childProcess = require('child_process');
 const program = require('commander');
 const ora = require('ora');
+const {promisify} = require('util');
+const {execSync} = childProcess;
+const exec = promisify(childProcess.exec);
 
-module.exports = function (pull) {
+module.exports = async function (pull) {
     const types = [
         {name: 'first', emoji: '🎉', emojiCode: 'tada', description: 'Initial commit'},
         {name: 'feat', emoji: '✨', emojiCode: 'sparkles', description: '添加新功能'},
@@ -44,13 +47,13 @@ module.exports = function (pull) {
         message = messages.filter(item => item !== '-p' && item !== '--p').join(' ');
     }
 
-// message 默认代码重构
+    // message 默认代码重构
     let msg;
     if (!message) message = 'refa';
 
     const messages = message.split(' ');
 
-// 只有一行 fix:Bug修复 fix：Bug修复 fixBug修复
+    // 只有一行 fix:Bug修复 fix：Bug修复 fixBug修复
     if (messages.length === 1) {
         const m = messages[0];
         types.forEach(item => {
@@ -60,7 +63,7 @@ module.exports = function (pull) {
             if (m.indexOf(`${name}`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + '', '') || description}`;
         });
     }
-// type之后有空格 fix Bug修复
+    // type之后有空格 fix Bug修复
     if (messages.length > 1) {
         const [m, m2, ...others] = messages;
 
@@ -72,7 +75,7 @@ module.exports = function (pull) {
         });
     }
 
-// 没有type
+    // 没有type
     if (!msg) msg = messages.join('\n');
 
     try {
@@ -80,13 +83,9 @@ module.exports = function (pull) {
         const currentBranch = branch.toString().replace('*', '').trim();
 
         if (pull) {
-            console.log('🚚 git pull');
-            const spinner = ora('Loading unicorns').start();
-            setTimeout(() => {
-                spinner.color = 'yellow';
-                spinner.text = 'Loading rainbows';
-            }, 1000);
-            execSync(`git pull`, {stdio: [0, 1, 2]});
+            // console.log('🚚 git pull');
+            const spinner = ora('🚚 git pull').start();
+            await exec(`git pull`, {stdio: [0, 1, 2]});
             console.log(); // 换行
             spinner.stop();
         }
