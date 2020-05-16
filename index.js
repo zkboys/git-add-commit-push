@@ -49,9 +49,9 @@ if (messages.length === 1) {
     const m = message[0];
     types.forEach(item => {
         const {name, emojiCode} = item;
-        if (m.indexOf(`${name}:`)) return msg = `:${emojiCode}: ${m.replace(name + ':')}`;
-        if (m.indexOf(`${name}：`)) return msg = `:${emojiCode}: ${m.replace(name + '：')}`;
-        if (m.indexOf(`${name}`)) return msg = `:${emojiCode}: ${m.replace(name + '')}`;
+        if (m.indexOf(`${name}:`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + ':')}`;
+        if (m.indexOf(`${name}：`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + '：')}`;
+        if (m.indexOf(`${name}`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + '')}`;
     });
 }
 
@@ -61,9 +61,9 @@ if (messages.length > 1) {
 
     types.forEach(item => {
         const {name, emojiCode} = item;
-        if (m.indexOf(`${name}:`)) return msg = `:${emojiCode}: ${m2}\n${others.join('\n')}`;
-        if (m.indexOf(`${name}：`)) return msg = `:${emojiCode}: ${m2}\n${others.join('\n')}`;
-        if (m.indexOf(`${name}`)) return msg = `:${emojiCode}: ${m2}\n${others.join('\n')}`;
+        if (m.indexOf(`${name}:`) !== -1) return msg = `:${emojiCode}: ${m2}\n${others.join('\n')}`;
+        if (m.indexOf(`${name}：`) !== -1) return msg = `:${emojiCode}: ${m2}\n${others.join('\n')}`;
+        if (m.indexOf(`${name}`) !== -1) return msg = `:${emojiCode}: ${m2}\n${others.join('\n')}`;
     });
 }
 
