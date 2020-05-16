@@ -89,5 +89,6 @@ try {
     console.log('🎉 Successfully!');
 } catch (e) {
     // console.error(e);
+    console.log();
     console.log('🚨 Something Wrong!');
 }
