@@ -48,10 +48,10 @@ const messages = message.split(' ');
 if (messages.length === 1) {
     const m = messages[0];
     types.forEach(item => {
-        const {name, emojiCode} = item;
-        if (m.indexOf(`${name}:`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + ':', '')}`;
-        if (m.indexOf(`${name}：`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + '：', '')}`;
-        if (m.indexOf(`${name}`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + '', '')}`;
+        const {name, emojiCode, description} = item;
+        if (m.indexOf(`${name}:`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + ':', '') || description}`;
+        if (m.indexOf(`${name}：`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + '：', '') || description}`;
+        if (m.indexOf(`${name}`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + '', '') || description}`;
     });
 }
 // type之后有空格 fix Bug修复
