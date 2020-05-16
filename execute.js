@@ -42,13 +42,13 @@ module.exports = function (pull) {
         message = messages.filter(item => item !== '-p' && item !== '--p').join(' ');
     }
 
-// message 默认代码重构
+    // message 默认代码重构
     let msg;
     if (!message) message = 'style';
 
     const messages = message.split(' ');
 
-// 只有一行 fix:Bug修复 fix：Bug修复 fixBug修复
+    // 只有一行 fix:Bug修复 fix：Bug修复 fixBug修复
     if (messages.length === 1) {
         const m = messages[0];
         types.forEach(item => {
@@ -58,7 +58,7 @@ module.exports = function (pull) {
             if (m.indexOf(`${name}`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + '', '') || description}`;
         });
     }
-// type之后有空格 fix Bug修复
+    // type之后有空格 fix Bug修复
     if (messages.length > 1) {
         const [m, m2, ...others] = messages;
 
@@ -70,12 +70,13 @@ module.exports = function (pull) {
         });
     }
 
-// 没有type
+    // 没有type
     if (!msg) msg = messages.join('\n');
 
     try {
         const branch = execSync('git branch');
-        const currentBranch = branch.toString().replace('*', '').trim();
+        const branches = branch.toString().split('\n');
+        const currentBranch = branches.find(item => item.startsWith('*')).replace('*', '').trim();
 
         if (pull) {
             console.log('🚚 git pull');
