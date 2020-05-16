@@ -35,8 +35,6 @@ program
 
 let message = program.message;
 
-console.log(program.pull);
-
 if (!message) {
     const [, , ...messages] = process.argv;
     message = messages.filter(item => item !== '-p' && item !== '--p').join(' ');
@@ -77,9 +75,11 @@ try {
     const branch = execSync('git branch');
     const currentBranch = branch.toString().replace('*', '').trim();
 
-    console.log('🚚 git pull');
-    execSync(`git pull`, {stdio: [0, 1, 2]});
-    console.log(); // 换行
+    if (program.pull) {
+        console.log('🚚 git pull');
+        execSync(`git pull`, {stdio: [0, 1, 2]});
+        console.log(); // 换行
+    }
 
     console.log('✨  git add .');
     execSync(`git add .`, {stdio: [0, 1, 2]});
