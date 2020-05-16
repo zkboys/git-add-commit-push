@@ -106,8 +106,8 @@ module.exports = async function (pull) {
         spinner.text = '✨  git add .';
         spinner.start();
         await exec(`git add .`, {stdio: [0, 1, 2]});
-        spinner.stop();
         console.log(); // 换行
+        spinner.stop();
 
         spinner.text = '🔥 git commit';
         spinner.start();
