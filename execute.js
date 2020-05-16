@@ -12,9 +12,9 @@ module.exports = function (pull) {
         {name: 'feature', emoji: '✨', emojiCode: 'sparkles', description: ' 添加新功能'},
         {name: 'fix', emoji: '🚑', emojiCode: 'ambulance', description: 'Bug修复'},
         {name: 'docs', emoji: '📝', emojiCode: 'pencil', description: '整理文档'},
-        {name: 'style', emoji: '🎨', emojiCode: 'art', description: '代码格式化'},
-        {name: 'refa', emoji: '🔨', emojiCode: 'wrench', description: '代码重构'},
-        {name: 'refactor', emoji: '🔨', emojiCode: 'wrench', description: '代码重构'},
+        {name: 'style', emoji: '🎨', emojiCode: 'art', description: '整理代码'},
+        {name: 'refa', emoji: '🔨', emojiCode: 'hammer', description: '代码重构'},
+        {name: 'refactor', emoji: '🔨', emojiCode: 'hammer', description: '代码重构'},
         {name: 'test', emoji: '✅', emojiCode: 'white_check_mark', description: ' 增加测试'},
         {name: 'chore', emoji: '🐳', emojiCode: 'whale', description: '修改构建过程或辅助工具'},
         {name: 'deploy', emoji: '🔖', emojiCode: 'bookmark', description: '部署'},
@@ -44,7 +44,7 @@ module.exports = function (pull) {
 
 // message 默认代码重构
     let msg;
-    if (!message) message = 'refa';
+    if (!message) message = 'style';
 
     const messages = message.split(' ');
 
