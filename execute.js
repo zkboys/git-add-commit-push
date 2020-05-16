@@ -9,7 +9,7 @@ const {execSync} = childProcess;
 // const exec = promisify(childProcess.exec);
 const exec = async function (...args) {
     return new Promise((resolve, reject) => {
-        childProcess.exec(...args, (err, stdout, stderr) => {
+        const child = childProcess.exec(...args, (err, stdout, stderr) => {
             if (err) {
                 console.log();
                 console.log(err.message);
@@ -21,8 +21,17 @@ const exec = async function (...args) {
             stdout && stdout.trim() && console.log(stdout);
             stderr && stderr.trim() && console.log(stderr);
         });
+
+        child.stdout.on('data', (data) => {
+            console.log(`child stdout:\n${data}`);
+        });
+
+        child.stderr.on('data', (data) => {
+            console.error(`child stderr:\n${data}`);
+        });
     });
 };
+
 
 module.exports = async function (pull) {
     const types = [
