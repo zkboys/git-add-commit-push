@@ -75,8 +75,8 @@ module.exports = function (pull) {
 
     try {
         const branch = execSync('git branch');
-        console.log(branch.toString().split('\n'));
-        const currentBranch = branch.toString().replace('*', '').trim();
+        const branches = branch.toString().split('\n');
+        const currentBranch = branches.find(item => item.startsWith('*')).replace('*', '').trim();
 
         if (pull) {
             console.log('🚚 git pull');
