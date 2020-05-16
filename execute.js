@@ -82,7 +82,7 @@ module.exports = async function (pull) {
     spinner.color = 'yellow';
 
     try {
-        const branch = execSync('git branch');
+        const branch = await exec('git branch');
         const currentBranch = branch.toString().replace('*', '').trim();
 
         if (pull) {
@@ -101,13 +101,13 @@ module.exports = async function (pull) {
 
         spinner.text = '🔥 git commit';
         spinner.start();
-        execSync(`git commit -m '${msg}'`, {stdio: [0, 1, 2]});
+        await exec(`git commit -m '${msg}'`, {stdio: [0, 1, 2]});
         console.log();
         spinner.stop();
 
         spinner.text = `🚀 git push origin ${currentBranch} `;
         spinner.start();
-        execSync(`git push origin ${currentBranch} `, {stdio: [0, 1, 2]});
+        await exec(`git push origin ${currentBranch} `, {stdio: [0, 1, 2]});
         console.log();
         spinner.stop();
 
