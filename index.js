@@ -47,6 +47,7 @@ const messages = message.split(' ');
 // 只有一行 fix:Bug修复 fix：Bug修复 fixBug修复
 if (messages.length === 1) {
     const m = messages[0];
+    console.log(11, m);
     types.forEach(item => {
         const {name, emojiCode} = item;
         if (m.indexOf(`${name}:`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + ':')}`;
