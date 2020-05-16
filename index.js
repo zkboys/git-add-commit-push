@@ -49,13 +49,12 @@ if (messages.length === 1) {
     const m = messages[0];
     types.forEach(item => {
         const {name, emojiCode} = item;
-        console.log(222, m.indexOf(name));
         if (m.indexOf(`${name}:`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + ':', '')}`;
         if (m.indexOf(`${name}：`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + '：', '')}`;
         if (m.indexOf(`${name}`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + '', '')}`;
     });
 }
-
+console.log(88, msg);
 // type之后有空格 fix Bug修复
 if (messages.length > 1) {
     const [m, m2, ...others] = messages;
