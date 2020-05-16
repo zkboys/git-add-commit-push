@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/zkboys/git-add-commit-push#readme",
   "dependencies": {
+    "chalk": "^4.0.0",
     "commander": "^5.1.0"
   }
 }

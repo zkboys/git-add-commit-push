@@ -3,18 +3,19 @@
 // 快速push 到git服务器脚本
 const {execSync} = require('child_process');
 const program = require('commander');
+const chalk = require('chalk');
 
 module.exports = function (pull) {
     const types = [
         {name: 'first', emoji: '🎉', emojiCode: 'tada', description: 'Initial commit'},
-        {name: 'feat', emoji: '✨', emojiCode: 'sparkles', description: '添加新功能'},
-        {name: 'feature', emoji: '✨', emojiCode: 'sparkles', description: '添加新功能'},
+        {name: 'feat', emoji: '✨', emojiCode: 'sparkles', description: ' 添加新功能'},
+        {name: 'feature', emoji: '✨', emojiCode: 'sparkles', description: ' 添加新功能'},
         {name: 'fix', emoji: '🚑', emojiCode: 'ambulance', description: 'Bug修复'},
         {name: 'docs', emoji: '📝', emojiCode: 'pencil', description: '整理文档'},
         {name: 'style', emoji: '🎨', emojiCode: 'art', description: '代码格式化'},
         {name: 'refa', emoji: '🔨', emojiCode: 'hammer', description: '代码重构'},
         {name: 'refactor', emoji: '🔨', emojiCode: 'hammer', description: '代码重构'},
-        {name: 'test', emoji: '✅', emojiCode: 'white_check_mark', description: '增加测试'},
+        {name: 'test', emoji: '✅', emojiCode: 'white_check_mark', description: ' 增加测试'},
         {name: 'chore', emoji: '🐳', emojiCode: 'whale', description: '修改构建过程或辅助工具'},
         {name: 'deploy', emoji: '🔖', emojiCode: 'bookmark', description: '部署'},
         {name: 'build', emoji: '🚀', emojiCode: 'rocket', description: '构建'},
@@ -24,16 +25,14 @@ module.exports = function (pull) {
 
     program
         .version(require('./package').version)
-        .usage(`
-    [message]
+        .usage(`[提交信息]
+        
+  ${chalk.green(`说明：
+    提交信息中的「空格」转为「\\n」`)}
     
-    说明：
-      空格 转为换行
-    
-    提交类型：
-      ${types.map(item => `${item.name.padEnd(maxNameLength)}: ${item.emoji} ${item.description}`).join('\n      ')}
-    `)
-        .option('-m, --message <注释>  ', '提交注释')
+  ${chalk.green(`提交类型：
+    ${types.map(item => `${item.name.padEnd(maxNameLength)}: ${item.emoji} ${item.description}`).join('\n    ')}`)}`)
+        .option('-m, --message <message>  ', 'Commit Message')
         .parse(process.argv);
 
     let message = program.message;
