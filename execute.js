@@ -11,7 +11,8 @@ const exec = async function (...args) {
     return new Promise((resolve, reject) => {
         childProcess.exec(...args, (err, stdout, stderr) => {
             if (err) {
-                console.log(err);
+                console.log();
+                console.log(err.message);
                 return reject(err);
             }
             resolve(stdout);
