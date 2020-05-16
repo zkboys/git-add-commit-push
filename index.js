@@ -76,12 +76,15 @@ try {
 
     console.log('🎉 git add .');
     execSync(`git add .`, {stdio: [0, 1, 2]});
+    console.log('\n');
 
-    console.log('📝 git commit');
+    console.log('🔥 git commit');
     execSync(`git commit -m '${msg}'`, {stdio: [0, 1, 2]});
+    console.log('\n');
 
     console.log(`🚀 git push origin ${currentBranch} `);
     execSync(`git push origin ${currentBranch} `, {stdio: [0, 1, 2]});
+    console.log('\n');
 
     console.log('🎉 Successfully');
 } catch (e) {
