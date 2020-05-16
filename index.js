@@ -72,9 +72,9 @@ if (!msg) msg = messages.join('\n');
 
 try {
     const branch = execSync('git branch');
-    // const currentBranch = branch.toString()
-    console.log(123, branch.toString().replace('*', ''));
-    execSync(`git add . && git commit -m '${msg}' && git push origin master `, {stdio: [0, 1, 2]});
+    const currentBranch = branch.toString().replace('*', '').trim();
+
+    execSync(`git add . && git commit -m '${msg}' && git push origin ${currentBranch} `, {stdio: [0, 1, 2]});
 } catch (e) {
     // console.error(e);
 }
