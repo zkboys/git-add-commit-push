@@ -9,26 +9,12 @@ const {execSync} = childProcess;
 // const exec = promisify(childProcess.exec);
 const exec = async function (...args) {
     return new Promise((resolve, reject) => {
-        const child = childProcess.exec(...args, (err, stdout, stderr) => {
-            if (err) {
-                // console.log();
-                // console.log(err.message);
-                // stdout && stdout.trim() && console.log(stdout);
-                // stderr && stderr.trim() && console.log(stderr);
-                return reject(err);
-            }
-            resolve(stdout);
-            // stdout && stdout.trim() && console.log(stdout);
-            // stderr && stderr.trim() && console.log(stderr);
-        });
-
-        child.stdout.on('data', (data) => {
-            console.log(`child stdout:\n${data}`);
-        });
-
-        child.stderr.on('data', (data) => {
-            console.error(`child stderr:\n${data}`);
-        });
+        try {
+            execSync(...args);
+            resolve();
+        } catch (e) {
+            reject(e);
+        }
     });
 };
 
