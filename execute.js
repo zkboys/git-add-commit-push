@@ -82,6 +82,10 @@ module.exports = function (pull) {
         if (pull) {
             console.log('🚚 git pull');
             const spinner = ora('Loading unicorns').start();
+            setTimeout(() => {
+                spinner.color = 'yellow';
+                spinner.text = 'Loading rainbows';
+            }, 1000);
             execSync(`git pull`, {stdio: [0, 1, 2]});
             console.log(); // 换行
             spinner.stop();
