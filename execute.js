@@ -78,29 +78,38 @@ module.exports = async function (pull) {
     // 没有type
     if (!msg) msg = messages.join('\n');
 
+    const spinner = ora('Loading...');
+    spinner.color = 'yellow';
+
     try {
         const branch = execSync('git branch');
         const currentBranch = branch.toString().replace('*', '').trim();
 
         if (pull) {
-            // console.log('🚚 git pull');
-            const spinner = ora('🚚 git pull').start();
+            spinner.text = '🚚 git pull';
+            spinner.start();
             await exec(`git pull`, {stdio: [0, 1, 2]});
             console.log(); // 换行
             spinner.stop();
         }
 
-        console.log('✨  git add .');
-        execSync(`git add .`, {stdio: [0, 1, 2]});
+        spinner.text = '✨  git add .';
+        spinner.start();
+        await exec(`git add .`, {stdio: [0, 1, 2]});
         console.log(); // 换行
+        spinner.stop();
 
-        console.log('🔥 git commit');
+        spinner.text = '🔥 git commit';
+        spinner.start();
         execSync(`git commit -m '${msg}'`, {stdio: [0, 1, 2]});
         console.log();
+        spinner.stop();
 
-        console.log(`🚀 git push origin ${currentBranch} `);
+        spinner.text = `🚀 git push origin ${currentBranch} `;
+        spinner.start();
         execSync(`git push origin ${currentBranch} `, {stdio: [0, 1, 2]});
         console.log();
+        spinner.stop();
 
         console.log('🎉 Successfully!');
     } catch (e) {
