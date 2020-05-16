@@ -12,8 +12,8 @@ const exec = async function (...args) {
         childProcess.exec(...args, (err, stdout, stderr) => {
             if (err) return reject(err);
             resolve(stdout);
-            stdout && console.log(stdout);
-            stderr && console.log(stderr);
+            stdout && stdout.trim() && console.log(stdout);
+            stderr && stderr.trim() && console.log(stderr);
         });
     });
 };
