@@ -70,4 +70,8 @@ if (messages.length > 1) {
 // 没有type
 if (!msg) msg = messages.join('\n');
 
-execSync(`git add . && git commit -m '${msg}' && git push origin master `, {stdio: [0, 1, 2]});
+try {
+    execSync(`git add . && git commit -m '${msg}' && git push origin master `, {stdio: [0, 1, 2]});
+} catch (e) {
+    console.log(123, e);
+}
