@@ -73,5 +73,5 @@ if (!msg) msg = messages.join('\n');
 try {
     execSync(`git add . && git commit -m '${msg}' && git push origin master `, {stdio: [0, 1, 2]});
 } catch (e) {
-    console.error(e);
+    // console.error(e);
 }
