@@ -66,7 +66,6 @@ if (messages.length > 1) {
     });
 }
 
-
 // 没有type
 if (!msg) msg = messages.join('\n');
 
