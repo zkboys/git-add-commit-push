@@ -27,7 +27,7 @@ let message = program.message;
 
 if (!message) {
     const [, , ...messages] = process.argv;
-    message = messages.join('\n') || ':bug:整理代码';
+    message = messages.join('\n') || ':bug: :wrench: 整理代码';
 }
 
 execSync(`git add . && git commit -m '${message}' && git push origin master `, {stdio: [0, 1, 2]});
