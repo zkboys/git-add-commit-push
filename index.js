@@ -30,9 +30,12 @@ program
       ${types.map(item => `${item.name.padEnd(maxNameLength)}: ${item.emoji} ${item.description}`).join('\n      ')}
     `)
     .option('-m, --message <注释>  ', '提交注释')
+    .option('-p, --pull', '是否执行 git pull')
     .parse(process.argv);
 
 let message = program.message;
+
+console.log(program.pull);
 
 if (!message) {
     const [, , ...messages] = process.argv;
