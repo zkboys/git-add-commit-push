@@ -7,7 +7,7 @@ const types = [
     {name: 'feat', emoji: '✨', emojiCode: 'sparkles', description: '添加新功能'},
     {name: 'feature', emoji: '✨', emojiCode: 'sparkles', description: '添加新功能'},
     {name: 'fix', emoji: '🚑', emojiCode: 'ambulance', description: 'Bug修复'},
-    {name: 'docs', emoji: '📝', emojiCode: 'pencil', description: '编写文档'},
+    {name: 'docs', emoji: '📝', emojiCode: 'pencil', description: '整理文档'},
     {name: 'style', emoji: '🎨', emojiCode: 'art', description: '代码格式化'},
     {name: 'refa', emoji: '🔨', emojiCode: 'hammer', description: '代码重构'},
     {name: 'refactor', emoji: '🔨', emojiCode: 'hammer', description: '代码重构'},
