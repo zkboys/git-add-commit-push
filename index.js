@@ -72,7 +72,7 @@ if (!msg) msg = messages.join('\n');
 
 try {
     const branch = execSync('git branch');
-    console.log(branch);
+    console.log(123, branch.toString());
     execSync(`git add . && git commit -m '${msg}' && git push origin master `, {stdio: [0, 1, 2]});
 } catch (e) {
     // console.error(e);
