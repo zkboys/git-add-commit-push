@@ -54,7 +54,6 @@ if (messages.length === 1) {
         if (m.indexOf(`${name}`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + '', '')}`;
     });
 }
-console.log(88, msg);
 // type之后有空格 fix Bug修复
 if (messages.length > 1) {
     const [m, m2, ...others] = messages;
@@ -68,6 +67,6 @@ if (messages.length > 1) {
 }
 
 // 没有type
-msg = messages.join('\n');
+if (!msg) msg = messages.join('\n');
 
 execSync(`git add . && git commit -m '${msg}' && git push origin master `, {stdio: [0, 1, 2]});
