@@ -4,6 +4,7 @@
 const {execSync} = require('child_process');
 const program = require('commander');
 const types = [
+    {name: 'first', emoji: '✨', emojiCode: 'tada', description: 'Initial commit'},
     {name: 'feat', emoji: '✨', emojiCode: 'sparkles', description: '添加新功能'},
     {name: 'feature', emoji: '✨', emojiCode: 'sparkles', description: '添加新功能'},
     {name: 'fix', emoji: '🚑', emojiCode: 'ambulance', description: 'Bug修复'},
