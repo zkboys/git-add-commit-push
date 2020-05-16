@@ -13,6 +13,8 @@ const exec = async function (...args) {
             if (err) {
                 console.log();
                 console.log(err.message);
+                stdout && stdout.trim() && console.log(stdout);
+                stderr && stderr.trim() && console.log(stderr);
                 return reject(err);
             }
             resolve(stdout);
@@ -127,7 +129,7 @@ module.exports = async function (pull) {
 
         console.log('🎉 Successfully!');
     } catch (e) {
-        console.error(e);
+        // console.error(e);
         spinner.stop();
         console.log();
         console.log('🚨 Something Wrong!');
