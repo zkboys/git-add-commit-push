@@ -18,6 +18,7 @@ const types = [
     {name: 'build', emoji: '🚀', emojiCode: 'rocket', description: '构建'},
 ];
 const maxNameLength = Math.max(...types.map(item => item.name.length));
+
 program
     .version(require('./package').version)
     .usage(`
