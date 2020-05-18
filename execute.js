@@ -79,6 +79,7 @@ module.exports = function (pull) {
         const currentBranch = branches.find(item => item.startsWith('*')).replace('*', '').trim();
 
         console.log('🌴 current branch:', currentBranch);
+        console.log();
 
         if (pull) {
             console.log('🚚 git pull');
