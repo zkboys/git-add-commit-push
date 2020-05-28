@@ -1,6 +1,6 @@
 {
   "name": "zk-acp",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "git快速提交脚本",
   "main": "index.js",
   "bin": {
