@@ -43,35 +43,31 @@ module.exports = function (pull) {
     }
 
     // message 默认代码重构
-    let msg;
     if (!message) message = 'style';
 
-    const messages = message.split(' ');
+    let commitMessage = message;
 
-    // 只有一行 fix:Bug修复 fix：Bug修复 fixBug修复
-    if (messages.length === 1) {
-        const m = messages[0];
-        types.forEach(item => {
-            const {name, emojiCode, description} = item;
-            if (m.indexOf(`${name}:`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + ':', '') || description}`;
-            if (m.indexOf(`${name}：`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + '：', '') || description}`;
-            if (m.indexOf(`${name}`) !== -1) return msg = `:${emojiCode}: ${m.replace(name + '', '') || description}`;
-        });
-    }
-    // type之后有空格 fix Bug修复
-    if (messages.length > 1) {
-        const [m, m2, ...others] = messages;
+    // 转换emoji表情
+    types.forEach(item => {
+        const {name, emojiCode, description} = item;
+        for (const em of [
+            `${name}:`,
+            `${name}：`,
+            `${name} `,
+            `${name}`,
+        ]) {
+            if (message.indexOf(em) !== -1) {
+                commitMessage = `:${emojiCode}: ${message.replace(em, '') || description}`;
+                return;
+            }
+        }
+    });
 
-        types.forEach(item => {
-            const {name, emojiCode} = item;
-            if (m.indexOf(`${name}:`) !== -1) return msg = `:${emojiCode}: ${m2}\n${others.join('\n')}`;
-            if (m.indexOf(`${name}：`) !== -1) return msg = `:${emojiCode}: ${m2}\n${others.join('\n')}`;
-            if (m.indexOf(`${name}`) !== -1) return msg = `:${emojiCode}: ${m2}\n${others.join('\n')}`;
-        });
-    }
-
-    // 没有type
-    if (!msg) msg = messages.join('\n');
+    // 双空格转换为换行
+    commitMessage = commitMessage.split('  ')
+        .map(item => item.trim())
+        .filter(item => !!item)
+        .join('\n');
 
     try {
         const branch = execSync('git branch');
@@ -93,7 +89,7 @@ module.exports = function (pull) {
         console.log(); // 换行
 
         console.log('🔥 git commit');
-        execSync(`git commit -m '${msg}'`, {stdio: [0, 1, 2]});
+        execSync(`git commit -m '${commitMessage}'`, {stdio: [0, 1, 2]});
         console.log();
 
         console.log(`🚀 git push origin ${currentBranch} `);
