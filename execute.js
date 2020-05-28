@@ -63,11 +63,11 @@ module.exports = function (pull) {
         }
     });
 
-    // 双空格转换为换行
-    commitMessage = commitMessage.split('  ')
-        .map(item => item.trim())
-        .filter(item => !!item)
-        .join('\n');
+    // 双空格转换为换行 好像获取不到双空格
+    // commitMessage = commitMessage.split('  ')
+    //     .map(item => item.trim())
+    //     .filter(item => !!item)
+    //     .join('\n');
 
     try {
         const branch = execSync('git branch');
