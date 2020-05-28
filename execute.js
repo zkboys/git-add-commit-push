@@ -64,11 +64,8 @@ module.exports = function (pull) {
     });
 
     // 空格转换为换行 好像获取不到双空格
-    commitMessage = commitMessage.split(' ')
-        .map(item => item.trim())
-        .filter(item => !!item)
-        .join('\n');
-    console.log(commitMessage);
+    const [m1, m2, ...others] = commitMessage.split(' ');
+    commitMessage = `${m1} ${m2}\n${others.join('\n')}`;
 
     try {
         const branch = execSync('git branch');
