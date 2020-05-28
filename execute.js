@@ -68,6 +68,7 @@ module.exports = function (pull) {
         .map(item => item.trim())
         .filter(item => !!item)
         .join('\n');
+    console.log(commitMessage);
 
     try {
         const branch = execSync('git branch');
