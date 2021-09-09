@@ -1,6 +1,6 @@
 {
   "name": "zk-acp",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "git快速提交脚本",
   "main": "index.js",
   "bin": {
@@ -29,6 +29,7 @@
   "homepage": "https://github.com/zkboys/git-add-commit-push#readme",
   "dependencies": {
     "chalk": "^4.0.0",
-    "commander": "^5.1.0"
+    "commander": "^5.1.0",
+    "inquirer": "^8.1.2"
   }
 }

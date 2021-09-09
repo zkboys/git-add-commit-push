@@ -4,9 +4,11 @@
 const {execSync} = require('child_process');
 const program = require('commander');
 const chalk = require('chalk');
+const inquirer = require('inquirer');
 
-module.exports = function (pull) {
+module.exports = async function(pull) {
     const types = [
+        {name: 'init', emoji: '🎉', emojiCode: 'tada', description: 'Initial commit'},
         {name: 'first', emoji: '🎉', emojiCode: 'tada', description: 'Initial commit'},
         {name: 'feat', emoji: '✨', emojiCode: 'sparkles', description: ' 添加新功能'},
         {name: 'feature', emoji: '✨', emojiCode: 'sparkles', description: ' 添加新功能'},
@@ -35,15 +37,27 @@ module.exports = function (pull) {
         .option('-m, --message <message>  ', 'Commit Message')
         .parse(process.argv);
 
+    // 提交注释 -m
     let message = program.message;
 
+    // 如果 -m 参数不存在，将命令行中所有的内容，作为message
     if (!message) {
         const [, , ...messages] = process.argv;
         message = messages.filter(item => item !== '-p' && item !== '--p').join(' ');
     }
 
-    // message 默认代码重构
-    if (!message) message = 'style';
+    // message 不允许为空，提示用户输入
+    if (!message) {
+        const answers = await inquirer.prompt([
+            {
+                type: 'input',
+                message: '请输入注释:',
+                name: 'message',
+            },
+        ]);
+
+        message = 'feat ' + answers.message;
+    }
 
     let commitMessage = message;
 
