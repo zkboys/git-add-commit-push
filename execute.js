@@ -37,7 +37,6 @@ module.exports = function(pull) {
         .parse(process.argv);
 
 
-
     let message = program.message;
 
     if (!message) {
@@ -66,6 +65,10 @@ module.exports = function(pull) {
             }
         }
     });
+
+    if (!commitMessage.startsWith(':')) {
+        commitMessage = `:sparkles: ${commitMessage}`;
+    }
 
     // 空格转换为换行 好像获取不到双空格
     // const [m1, m2, ...others] = commitMessage.split(' ');
