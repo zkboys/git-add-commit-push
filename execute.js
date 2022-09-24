@@ -51,8 +51,6 @@ module.exports = function(pull) {
     let commitMessage = message;
 
 
-    return ;
-
     // 转换emoji表情
     types.forEach(item => {
         const { name, emojiCode, description } = item;
