@@ -30,6 +30,7 @@ module.exports = function(pull) {
   ${chalk.green(`说明：
     提交信息中的「空格」转为「\\n」`)}
     
+    
   ${chalk.green(`提交类型：
     ${types.map(item => `${item.name.padEnd(maxNameLength)}: ${item.emoji} ${item.description}`).join('\n    ')}`)}`)
         .option('-m, --message <message>  ', 'Commit Message')
