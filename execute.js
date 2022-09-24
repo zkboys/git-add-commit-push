@@ -36,6 +36,8 @@ module.exports = function(pull) {
         .option('-m, --message <message>  ', 'Commit Message')
         .parse(process.argv);
 
+
+
     let message = program.message;
 
     if (!message) {
@@ -47,6 +49,9 @@ module.exports = function(pull) {
     if (!message) message = 'style';
 
     let commitMessage = message;
+
+
+    return ;
 
     // 转换emoji表情
     types.forEach(item => {
